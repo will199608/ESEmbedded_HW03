@@ -72,7 +72,7 @@ This is the hw03 sample. Please follow the steps below.
   60:	60bb      	str	r3, [r7, #8]  
   62:	68f8      	ldr	r0, [r7, #12]  		將a值取出到r0  
   64:	68b9      	ldr	r1, [r7, #8]  		將b值取出到r1  
-  66:	f7ff ffcf 	bl	8  			進到副程式sub運算  
+  66:	f7ff ffcf 	bl	8  			進到副程式sub運算(r0 r1)  
   6a:	6078      	str	r0, [r7, #4]  		r0回傳到預留環境變數空間c  
   6c:	68bb      	ldr	r3, [r7, #8]  		將超過4個以上的輸入變數放到堆疊記憶體  
   6e:	9300      	str	r3, [sp, #0]  
@@ -82,8 +82,8 @@ This is the hw03 sample. Please follow the steps below.
   76:	2102      	movs	r1, #2  
   78:	2203      	movs	r2, #3  
   7a:	68fb      	ldr	r3, [r7, #12]  
-  7c:	f7ff ffd2 	bl	24 <add>  
-  80:	6078      	str	r0, [r7, #4]  
+  7c:	f7ff ffd2 	bl	24 <add>  		進到副程式add運算(r0 r1 r2 r3)  
+  80:	6078      	str	r0, [r7, #4]  		r0回傳到預留環境變數空間c  
   82:	e7fe      	b.n	82 <reset_handler+0x2e>  
 	
 副程式sub:  
@@ -96,10 +96,10 @@ This is the hw03 sample. Please follow the steps below.
   12:	687a      	ldr	r2, [r7, #4]  
   14:	683b      	ldr	r3, [r7, #0]  
   16:	1ad3      	subs	r3, r2, r3  
-  18:	4618      	mov	r0, r3  
+  18:	4618      	mov	r0, r3  		r0為function回傳值  
   1a:	370c      	adds	r7, #12  
   1c:	46bd      	mov	sp, r7  
-  1e:	f85d 7b04 	ldr.w	r7, [sp], #4  		
+  1e:	f85d 7b04 	ldr.w	r7, [sp], #4  		指標位址回到主程式位址  
   22:	4770      	bx	lr  
 
 副程式add:  
@@ -122,10 +122,10 @@ This is the hw03 sample. Please follow the steps below.
   42:	441a      	add	r2, r3  
   44:	69fb      	ldr	r3, [r7, #28]  
   46:	4413      	add	r3, r2  
-  48:	4618      	mov	r0, r3  
+  48:	4618      	mov	r0, r3  		r0為function回傳值  
   4a:	3714      	adds	r7, #20  
   4c:	46bd      	mov	sp, r7  
-  4e:	f85d 7b04 	ldr.w	r7, [sp], #4  
+  4e:	f85d 7b04 	ldr.w	r7, [sp], #4  		指標位址回到主程式位址  
   52:	4770      	bx	lr  
 
 
