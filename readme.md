@@ -63,18 +63,18 @@ This is the hw03 sample. Please follow the steps below.
 主程式:
 
 00000054 <reset_handler>:  
-  54:	b580      	push	{r7, lr}   	r7為指標參數  
+  54:	b580      	push	{r7, lr}   		r7為指標參數  
   56:	b086      	sub	sp, #24  
-  58:	af02      	add	r7, sp, #8  	預留環境變數的記憶體空間  
-  5a:	2307      	movs	r3, #7  	環境變數:a  
+  58:	af02      	add	r7, sp, #8  		預留環境變數的記憶體空間  
+  5a:	2307      	movs	r3, #7  		環境變數:a  
   5c:	60fb      	str	r3, [r7, #12]  
-  5e:	2305      	movs	r3, #5  	環境變數:b  
+  5e:	2305      	movs	r3, #5  		環境變數:b  
   60:	60bb      	str	r3, [r7, #8]  
-  62:	68f8      	ldr	r0, [r7, #12]  	將a值取出到r0  
-  64:	68b9      	ldr	r1, [r7, #8]  	將b值取出到r1  
-  66:	f7ff ffcf 	bl	8  		進到副程式sub運算  
-  6a:	6078      	str	r0, [r7, #4]  	r0回傳到預留環境變數空間c  
-  6c:	68bb      	ldr	r3, [r7, #8]  	
+  62:	68f8      	ldr	r0, [r7, #12]  		將a值取出到r0  
+  64:	68b9      	ldr	r1, [r7, #8]  		將b值取出到r1  
+  66:	f7ff ffcf 	bl	8  			進到副程式sub運算  
+  6a:	6078      	str	r0, [r7, #4]  		r0回傳到預留環境變數空間c  
+  6c:	68bb      	ldr	r3, [r7, #8]  		將超過4個以上的輸入變數放到堆疊記憶體  
   6e:	9300      	str	r3, [sp, #0]  
   70:	687b      	ldr	r3, [r7, #4]  
   72:	9301      	str	r3, [sp, #4]  
@@ -99,7 +99,7 @@ This is the hw03 sample. Please follow the steps below.
   18:	4618      	mov	r0, r3  
   1a:	370c      	adds	r7, #12  
   1c:	46bd      	mov	sp, r7  
-  1e:	f85d 7b04 	ldr.w	r7, [sp], #4  
+  1e:	f85d 7b04 	ldr.w	r7, [sp], #4  		
   22:	4770      	bx	lr  
 
 副程式add:  
