@@ -63,18 +63,18 @@ This is the hw03 sample. Please follow the steps below.
 主程式:
 
 00000054 <reset_handler>:  
-  54:	b580      	push	{r7, lr}    
+  54:	b580      	push	{r7, lr}   	r7為指標參數  
   56:	b086      	sub	sp, #24  
-  58:	af02      	add	r7, sp, #8  
-  5a:	2307      	movs	r3, #7  
+  58:	af02      	add	r7, sp, #8  	預留環境變數的記憶體空間  
+  5a:	2307      	movs	r3, #7  	環境變數:a  
   5c:	60fb      	str	r3, [r7, #12]  
-  5e:	2305      	movs	r3, #5  
+  5e:	2305      	movs	r3, #5  	環境變數:b  
   60:	60bb      	str	r3, [r7, #8]  
-  62:	68f8      	ldr	r0, [r7, #12]  
-  64:	68b9      	ldr	r1, [r7, #8]  
-  66:	f7ff ffcf 	bl	8  
-  6a:	6078      	str	r0, [r7, #4]  
-  6c:	68bb      	ldr	r3, [r7, #8]  
+  62:	68f8      	ldr	r0, [r7, #12]  	將a值取出到r0  
+  64:	68b9      	ldr	r1, [r7, #8]  	將b值取出到r1  
+  66:	f7ff ffcf 	bl	8  		進到副程式sub運算  
+  6a:	6078      	str	r0, [r7, #4]  	r0回傳到預留環境變數空間c  
+  6c:	68bb      	ldr	r3, [r7, #8]  	
   6e:	9300      	str	r3, [sp, #0]  
   70:	687b      	ldr	r3, [r7, #4]  
   72:	9301      	str	r3, [sp, #4]  
