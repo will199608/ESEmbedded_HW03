@@ -49,8 +49,12 @@ This is the hw03 sample. Please follow the steps below.
 
 --------------------
 
-- [] **If you volunteer to give the presentation next week, check this.**
+- [ ] **If you volunteer to give the presentation next week, check this.**
 
 --------------------
 
 **★★★ Please take your note here ★★★**
+# main.c 設計
+從網路上的資料中得知，C的Function在讀取變數時會讀取Register中r0~r3中的值，再進入Function運算
+於是設計一個需要4個變數以下的Function以及一個需要4個變數以上的Function來觀察程式運行流程
+
