@@ -58,6 +58,34 @@ This is the hw03 sample. Please follow the steps below.
 
 從網路上的資料中得知，C的Function在讀取變數時會讀取Register中r0~r3中的值，再進入Function運算  
 於是設計一個需要4個變數以下的Function以及一個需要4個變數以上的Function來觀察程式運行流程
+<pre><code>
+int sub(int a, int b)
+{
+    return (a-b);
+}
+
+
+// pass multiple paramter
+int add(int a, int b, int c, int d, int e, int f)
+{
+        return a + b + c + d + e + f;
+}
+
+void reset_handler(void)
+{
+        int a = 7, b = 5;
+        int c;
+
+                // pass two integers
+        c = sub(a, b);
+
+                    // pass six integers
+        c = add(1, 2, 3, a, b, c);
+
+        while (1)
+         ;
+}
+</code></pre>
 
 # 觀察
 主程式:
